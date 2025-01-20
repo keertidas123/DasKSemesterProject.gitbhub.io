@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>DasK_SemesterProject</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <style>
+    /*This is the id for the Google Map so it's the correct height and width*/
+    #map {
+      height: 500px;
+      width: 500px;
+    }
+  </style>
+</head>
+
+<body>
+  <!--This code calls the function toggle() so the button activates dark mode-->
+  <button onclick="toggle()">Light/Dark mode</button>
+
+  <!--This code uses a div id to control the navbar and is organized by an unordered list, jumping to different sections on the webpage-->
+  <div class="navbar navbar-fixed-top" id="nav">
+    <ul>
+      <li><a href="#methods">Methods</a></li>
+      <li><a href="#resource">Resource</a></li>
+      <li><a href="#parks">Parks</a></li>
+      <li><a href="#game">Game</a></li>
+
+    </ul>
+  </div>
+
+  <article>
+    <!--This code is all for the header and shows the h1 heading, header image, and two header buttons to get to two of my external links-->
+    <div class="header-container">
+      <header class="header-item">
+        <h1>How to Live like a Kid</h1>
+        <img src="kid.jpg" width=300 id="header-img" alt="Kid in a field">
+        <button class="header-button" onClick="
+parent.location='https://www.disneyplus.com/'">Disney+</button>
+        <button class="header-button" onClick="
+parent.location='https://open.spotify.com/playlist/3vMNfnujwN2OUi47mL6oMR?si=6b6fc9cb523e40a9'">Nostalgia
+          Playlist</button>
+      </header>
+    </div>
+  </article>
+
+  <!--This code is a paragraph tag that shows the decription of what my website is about-->
+  <p class="ptext1">As much as we don't want to admit it, all of us as adults are growing up and straying further away
+    from our childhood. But, we could all take some time to feel young again with no responsibilities. If you're in a
+    tough spot in life, enjoy your adult freedom, as a child, with some of these tips.</p>
+
+  <!--This code is the "Methods" section of my website which uses the h2 heading, an ordered list to number my different methods, having a specific image for each method, and a description of what each method is-->
+  <section id="methods">
+    <h2 class="headingtext">Easy Methods</h2>
+    <ol>
+      <li class="litext">Go to a playground</li>
+    </ol>
+    <img src="playground.jpg" width=350 class="picmargin" alt="playground">
+    <p class="ptext">A playground is one of the best ways to play like a kid and also have some physical activity. If
+      you don't believe me, go on a swing right now and push yourself as high as you can. When I go on the swings, I
+      feel like I'm flying and back in my elementary school recess. It doesn't even have to be the swings, go down a
+      slide and enjoy that moment of adventure with minimal effort. The important thing is to find something you enjoy
+      and not take it too seriously.</p>
+    <ol>
+      <li class="litext">Rewatch your favorite childhood shows</li>
+    </ol>
+    <img src="childhoodshows.png" width=500 class="picmargin" alt="different childhood networks">
+    <p class="ptext">Whether it's Disney, Nick, or Cartoon Network, watch a show that you loved as a kid. It seems like
+      nothing but it can bring back such great memories. Sometimes, the shows can be cringy to watch as you've grown
+      older but that makes it ten times better. It's interesting to question and laugh at the entertainment you consumed
+      when you were a child. At the top of this page is a button to Disney+, a convenient website for rewatching old
+      shows (Disney or other).</p>
+    <ol>
+      <li class="litext">Listen to your favorite old songs</li>
+    </ol>
+    <img src="oldmusic.jpg" width=300 class="picmargin" alt="cassette">
+    <p class="ptext">If you don't have the attention span to rewatch a show, then listening to music is a great way to
+      connect to your inner child. You're experiencing nostalgic feelings through sounds that you may not hear a lot
+      nowadays. Easiest way to do this is by creating a playlist of your favorite childhood songs so you like every song
+      that plays. Need some suggestions? Next to the Disney+ button is a "Nostalgia Playlist", which I created on
+      Spotify.</p>
+  </section>
+
+  <!--This code is the "Resource" section which has the h3 heading, giving another resource to my website, being an external link-->
+  <section id="resource">
+    <h3 class="headingtext">A Resource to start your journey</h3>
+    <a href="https://www.healthline.com/health/mental-health/inner-child-healing" class="ptext" id="rsrcpadding">Healing
+      your Inner Child</a>
+  </section>
+
+  <!--This code is the "Parks" section holding the h4 heading which shows a Google Map with pins on the top 5 parks in Maryland, a different icon resembling the name for each park to differentiate, and a description of what's in the map-->
+  <section id="parks">
+    <h4 class="headingtext">Top 5 Parks in Maryland</h4>
+    <p class="ptext">Don't like playgrounds but want to go outdoors? In this map, there are pins on the top 5 parks in
+      Maryland: Greenbelt, Lake Artemesia, Paint Branch Stream Valley, Calvert, and Wheaton Regional. If you're having a
+      hard time finding some good options, check one of these out. An easy way to have fun and enjoy your youth!</p>
+    <div id="map"></div>
+  </section>
+
+
+  <!--This code leads to a game the user can play by entering their name, favorite word, and second favorite word using prompt from the function gameapplication(). A triangle will be made with the words alternating each row-->
+  <section id="game">
+    <h5 id="main-content" class="headingtext">The End: Play a Fun Game</h5>
+    <p class="ptext">Instructions: Enter the number of rows you would like. Then enter your two favorite words. A
+      triangle will be made with your two favorite words alternating each row. Hope you learned something about living
+      your youth!</p>
+    <button onclick="gameapplication()">Play</button>
+    <p id="word"></p>
+    <p id="word2"></p>
+  </section>
+
+  <script>
+    // This function is for the Google Map and displays the pins on all the parks with their given coordinates, also gives the image for each pin/icon
+    function initMap() {
+      const maryland = {lat: 39.0458, lng: -76.6413};
+      const park1 = {lat: 38.9855, lng: -76.9312}
+      const park2 = {lat: 38.3956, lng: -76.4293}
+      const park3 = {lat: 39.0519, lng: -77.0431}
+      const park4 = {lat: 38.9826, lng: -76.8975}
+      const park5 = {lat: 38.9876, lng: -76.9221}
+      const map = new google.maps.Map(document.getElementById("map"), {zoom: 10, center: maryland});
+      const paintbrush = {
+        url: "paintbrush.png",
+        scaledSize: new google.maps.Size(50, 50),
+      };
+      const marker = new google.maps.Marker({
+        position: park1,
+        map: map,
+        icon: paintbrush,
+      });
+      const playground = {
+        url: "playground2.png",
+        scaledSize: new google.maps.Size(50, 50),
+      };
+      const marker2 = new google.maps.Marker({
+        position: park2,
+        map: map,
+        icon: playground,
+      });
+      const wheat = {
+        url: "realwheat.png",
+        scaledSize: new google.maps.Size(50, 50),
+      };
+      const marker3 = new google.maps.Marker({
+        position: park3,
+        map: map,
+        icon: wheat,
+      });
+      const greenbelt = {
+        url: "greenbelt.png",
+        scaledSize: new google.maps.Size(50, 50),
+      };
+      const marker4 = new google.maps.Marker({
+        position: park4,
+        map: map,
+        icon: greenbelt,
+      });
+      const lake = {
+        url: "lake.png",
+        scaledSize: new google.maps.Size(50, 50),
+      };
+      const marker5 = new google.maps.Marker({
+        position: park5,
+        map: map,
+        icon: lake,
+      });
+    }
+
+    // This function is the toggle for dark mode which switches the webpage from a purple background with black text to a black background with white text
+    function toggle() {
+      var element = document.body;
+      var element2 = document.getElementById("nav");
+      element.classList.toggle("dark-mode");
+      element2.classList.toggle("dark-mode");
+    }
+
+    // This function collects the data from the gameapplication() and takes the ids of rows, word, and word2 dividing by them 2 so the rows can alternate
+    function triangle(rows, word, word2) {
+      for (let i = 0; i < rows; i++) {
+        if (i % 2 == 0) {
+          for (let j = 0; j <= i; j++) {
+            // printing word
+            document.writeln(word);
+          }
+        }
+        else {
+          for (let j = 0; j <= i; j++) {
+            // printing word2
+            document.writeln(word2);
+          }
+        }
+        // ending line after each row
+        document.writeln("<br>");
+      }
+    }
+
+    // This function takes the data from the prompt and prints it in triangle() so that the game works for the user
+    function gameapplication() {
+      let rows = prompt("Enter a # for rows");
+      if (rows != null) {
+      }
+      let word = prompt("Enter first fav word");
+      if (word != null) {
+      }
+      let word2 = prompt("Enter second fav word");
+      if (word2 != null) {
+      }
+
+      triangle(rows, word, word2);
+    }
+  </script>
+
+  <!--This code is the API key for the Google Map-->
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBxgByai5hehTCCRrIaZLZTjoXyTSabri0&callback=initMap"></script>
+
+</body>
+
+</html>
